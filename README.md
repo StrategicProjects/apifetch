@@ -5,6 +5,13 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/apifetch)](https://CRAN.R-project.org/package=apifetch)
+[![R-CMD-check](https://github.com/StrategicProjects/apifetch/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/StrategicProjects/apifetch/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Python
+sibling](https://img.shields.io/pypi/v/apifetch?label=python%20sibling&logo=python&logoColor=white)](https://pypi.org/project/apifetch/)
 <!-- badges: end -->
 
 `apifetch` is a small, dependency-light toolkit for talking to
