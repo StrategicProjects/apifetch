@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/apifetch)](https://CRAN.R-project.org/package=apifetch)
 [![R-CMD-check](https://github.com/StrategicProjects/apifetch/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/StrategicProjects/apifetch/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/apifetch)](https://CRAN.R-project.org/package=apifetch)
 [![Python sibling](https://img.shields.io/pypi/v/apifetch?label=python%20sibling&logo=python&logoColor=white)](https://pypi.org/project/apifetch/)
 <!-- badges: end -->
 
