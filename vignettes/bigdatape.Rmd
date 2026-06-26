@@ -12,7 +12,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
 ```
 
 `apifetch` was extracted from the
-[BigDataPE](https://github.com/leite/BigDataPE) package, which wraps the
+[BigDataPE](https://github.com/StrategicProjects/BigDataPE) package, which wraps the
 **Big Data PE** platform — a public-data REST API run by the Government of the
 State of Pernambuco, Brazil. This vignette shows how that service maps onto a
 single `apifetch` profile, and is the canonical worked example of configuring

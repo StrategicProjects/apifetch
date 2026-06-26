@@ -4,15 +4,18 @@
 \name{apifetch-package}
 \alias{apifetch}
 \alias{apifetch-package}
-\title{apifetch: A Generic Toolkit for Token-Authenticated REST API Retrieval}
+\title{apifetch: Token-Authenticated REST API Retrieval Toolkit}
 \description{
+\if{html}{\figure{logo.svg}{options: style='float: right' alt='logo' width='120'}}
+
 A small, dependency-light toolkit for talking to token-authenticated REST APIs. It manages authentication tokens in process environment variables (never written to disk), builds requests with configurable authentication and pagination strategies, and retrieves paginated data either one page at a time or in chunks combined into a single tibble. The design is API-agnostic: a single 'apifetch_api' profile describes an endpoint together with how it authenticates and paginates, so the same verbs work across different services.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/leite/apifetch}
-  \item Report bugs at \url{https://github.com/leite/apifetch/issues}
+  \item \url{https://github.com/StrategicProjects/apifetch}
+  \item \url{https://strategicprojects.github.io/apifetch/}
+  \item Report bugs at \url{https://github.com/StrategicProjects/apifetch/issues}
 }
 
 }

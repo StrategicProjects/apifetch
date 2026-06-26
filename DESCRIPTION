@@ -1,7 +1,8 @@
 Package: apifetch
 Type: Package
-Title: A Generic Toolkit for Token-Authenticated REST API Retrieval
-Version: 0.0.0.9000
+Title: Token-Authenticated REST API Retrieval Toolkit
+Version: 0.1.0
+Date: 2026-06-26
 Authors@R:
     person("André", "Leite", email = "leite@de.ufpe.br", role = c("aut", "cre"))
 Description: A small, dependency-light toolkit for talking to token-authenticated
@@ -13,8 +14,9 @@ Description: A small, dependency-light toolkit for talking to token-authenticate
     authenticates and paginates, so the same verbs work across different services.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
+Depends:
+    R (>= 4.1.0)
 Imports:
     cli,
     dplyr,
