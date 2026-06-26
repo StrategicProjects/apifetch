@@ -20,11 +20,15 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: André Leite \email{leite@de.ufpe.br}
+\strong{Maintainer}: André Leite \email{leite@castlab.org}
 
 Authors:
 \itemize{
-  \item André Leite \email{leite@de.ufpe.br}
+  \item André Leite \email{leite@castlab.org}
+  \item Hugo Vasconcelos \email{hugo.vasconcelos@ufpe.br}
+  \item Diogo Bezerra \email{diogo.bezerra@ufpe.br}
+  \item Marcos Wasilew \email{marcos.wasilew@gmail.com}
+  \item Carlos Amorin \email{carlos.agaf@ufpe.br}
 }
 
 }
