@@ -1,0 +1,71 @@
+---
+title: "Use case: the Big Data PE API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Use case: the Big Data PE API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+```
+
+`apifetch` was extracted from the
+[BigDataPE](https://github.com/leite/BigDataPE) package, which wraps the
+**Big Data PE** platform — a public-data REST API run by the Government of the
+State of Pernambuco, Brazil. This vignette shows how that service maps onto a
+single `apifetch` profile, and is the canonical worked example of configuring
+the package for a real API.
+
+## What is specific about Big Data PE
+
+The Big Data PE API has two conventions that differ from the `apifetch`
+defaults:
+
+- **Authentication** sends the token *verbatim* in the `Authorization` header
+  (no `Bearer ` prefix) — use `af_auth_raw()`.
+- **Pagination** sends `limit`/`offset` as **HTTP headers**, not query
+  parameters — use `af_paginate_offset("header")`.
+
+It also returns a status column named `"Mensagem"` that we drop when combining
+chunks (`drop_cols = "Mensagem"`), and it is only reachable from the
+**PE Conectado** network or VPN, which we surface via `connect_hint`.
+
+## Defining the profile
+
+```{r}
+library(apifetch)
+
+bigdatape <- af_api(
+  endpoint     = "https://www.bigdata.pe.gov.br/api/buscar",
+  service      = "BigDataPE",
+  auth         = af_auth_raw(),
+  pagination   = af_paginate_offset("header"),
+  drop_cols    = "Mensagem",
+  connect_hint = "Ensure you are on the PE Conectado network or VPN."
+)
+```
+
+## Storing a token and fetching
+
+```{r}
+af_store_token("dengue", "your-token-here", service = "BigDataPE")
+
+# A single page of 50 records
+dengue <- af_fetch(bigdatape, "dengue", limit = 50)
+
+# Everything, in chunks, with a progress message per chunk
+dengue_all <- af_fetch_all(
+  bigdatape, "dengue",
+  chunk_size = 50000,
+  verbosity = 1
+)
+```
+
+## Note on language
+
+Function and parameter names are English (R convention), but the API's response
+column names and some values are Portuguese (e.g. `nu_notificacao`,
+`"BOA VIAGEM"`). That is intentional — they come straight from the upstream
+service.

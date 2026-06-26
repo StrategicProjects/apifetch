@@ -1,0 +1,34 @@
+Package: apifetch
+Type: Package
+Title: A Generic Toolkit for Token-Authenticated REST API Retrieval
+Version: 0.0.0.9000
+Authors@R:
+    person("André", "Leite", email = "leite@de.ufpe.br", role = c("aut", "cre"))
+Description: A small, dependency-light toolkit for talking to token-authenticated
+    REST APIs. It manages authentication tokens in process environment variables
+    (never written to disk), builds requests with configurable authentication and
+    pagination strategies, and retrieves paginated data either one page at a time
+    or in chunks combined into a single tibble. The design is API-agnostic: a
+    single 'apifetch_api' profile describes an endpoint together with how it
+    authenticates and paginates, so the same verbs work across different services.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Imports:
+    cli,
+    dplyr,
+    httr2,
+    stats,
+    tibble,
+    utils
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://github.com/StrategicProjects/apifetch,
+    https://strategicprojects.github.io/apifetch/
+BugReports: https://github.com/StrategicProjects/apifetch/issues
+Config/roxygen2/version: 8.0.0

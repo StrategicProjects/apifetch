@@ -1,0 +1,42 @@
+url: https://strategicprojects.github.io/apifetch
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#1a2a65"
+    base_font: {google: "Jost"}
+
+navbar:
+  structure:
+    left:  [intro, reference, articles]
+    right: [search, github]
+
+home:
+  title: apifetch
+  description: A generic toolkit for token-authenticated REST API retrieval.
+
+reference:
+  - title: API profiles
+    desc: Describe an endpoint with its authentication and pagination.
+    contents:
+      - af_api
+      - af_auth
+      - af_paginate
+  - title: Fetching data
+    contents:
+      - af_fetch
+      - af_fetch_all
+  - title: Token management
+    contents:
+      - af_store_token
+      - af_get_token
+      - af_remove_token
+      - af_list_tokens
+  - title: Utilities
+    contents:
+      - parse_queries
+
+articles:
+  - title: Use cases
+    contents:
+      - bigdatape
