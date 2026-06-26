@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="246.5" height="280" viewBox="-12 -12 197.2 224"
+     width="246.5" height="280" viewBox="1.4 -12 197.2 224"
      preserveAspectRatio="xMidYMid meet"
      role="img" aria-label="apifetch">
   <title>apifetch</title>
@@ -13,21 +13,21 @@
     </linearGradient>
   </defs>
 
-  <!-- hexagon -->
+  <!-- hexagon (regular: every edge length 100, uniform 5px stroke) -->
   <path d="M100,0 L186.6,50 L186.6,150 L100,200 L13.4,150 L13.4,50 Z"
         fill="url(#hex)" stroke="#139dea" stroke-width="5" stroke-linejoin="round"/>
 
   <!-- fetch arrow (download = retrieve) -->
-  <path d="M88,42 L112,42 L112,88 L130,88 L100,124 L70,88 L88,88 Z"
+  <path d="M88,32 L112,32 L112,72 L130,72 L100,102 L70,72 L88,72 Z"
         fill="#139dea" stroke="#1a2a65" stroke-width="2.5" stroke-linejoin="round"/>
 
   <!-- wordmark -->
-  <text x="100" y="150" text-anchor="middle" font-weight="bold"
-        fill="#ececec" font-size="30" dominant-baseline="central">apifetch</text>
+  <text x="100" y="130" text-anchor="middle" font-weight="bold"
+        fill="#ececec" font-size="27" dominant-baseline="central">apifetch</text>
 
   <!-- chunk swatches (BigDataPE family palette) -->
-  <rect x="60"  y="167" width="16" height="16" rx="3" fill="#339e39"/>
-  <rect x="82"  y="167" width="16" height="16" rx="3" fill="#f8af13"/>
-  <rect x="104" y="167" width="16" height="16" rx="3" fill="#d1001e"/>
-  <rect x="126" y="167" width="16" height="16" rx="3" fill="#139dea"/>
+  <rect x="63"  y="150" width="14" height="14" rx="3" fill="#339e39"/>
+  <rect x="83"  y="150" width="14" height="14" rx="3" fill="#f8af13"/>
+  <rect x="103" y="150" width="14" height="14" rx="3" fill="#d1001e"/>
+  <rect x="123" y="150" width="14" height="14" rx="3" fill="#139dea"/>
 </svg>
