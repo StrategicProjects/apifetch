@@ -5,3 +5,7 @@
 .DS_Store
 *.tar.gz
 docs/
+
+# Claude Code
+CLAUDE.md
+.claude/
