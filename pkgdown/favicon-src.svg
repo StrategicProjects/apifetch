@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="6 -6 188 212" preserveAspectRatio="xMidYMid meet"
+     role="img" aria-label="apifetch">
+  <title>apifetch</title>
+  <defs>
+    <linearGradient id="hex" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22357d"/>
+      <stop offset="1" stop-color="#1a2a65"/>
+    </linearGradient>
+  </defs>
+  <path d="M100,0 L186.6,50 L186.6,150 L100,200 L13.4,150 L13.4,50 Z"
+        fill="url(#hex)" stroke="#139dea" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M84,46 L116,46 L116,104 L142,104 L100,150 L58,104 L84,104 Z"
+        fill="#139dea" stroke="#1a2a65" stroke-width="3" stroke-linejoin="round"/>
+</svg>
