@@ -28,7 +28,7 @@ Authors:
   \item Hugo Vasconcelos \email{hugo.vasconcelos@ufpe.br}
   \item Diogo Bezerra \email{diogo.bezerra@ufpe.br}
   \item Marcos Wasilew \email{marcos.wasilew@gmail.com}
-  \item Carlos Amorin \email{carlos.agaf@ufpe.br}
+  \item Carlos Amorim \email{carlos.agaf@ufpe.br}
 }
 
 }

@@ -8,7 +8,7 @@ Authors@R: c(
     person("Hugo", "Vasconcelos", email = "hugo.vasconcelos@ufpe.br", role = "aut"),
     person("Diogo", "Bezerra", email = "diogo.bezerra@ufpe.br", role = "aut"),
     person("Marcos", "Wasilew", email = "marcos.wasilew@gmail.com", role = "aut"),
-    person("Carlos", "Amorin", email = "carlos.agaf@ufpe.br", role = "aut"))
+    person("Carlos", "Amorim", email = "carlos.agaf@ufpe.br", role = "aut"))
 Description: A small, dependency-light toolkit for talking to token-authenticated
     REST APIs. It manages authentication tokens in process environment variables
     (never written to disk), builds requests with configurable authentication and
