@@ -1,7 +1,7 @@
 Package: apifetch
 Type: Package
 Title: Token-Authenticated REST API Retrieval Toolkit
-Version: 0.1.0
+Version: 0.1.0.9000
 Date: 2026-06-26
 Authors@R: c(
     person("André", "Leite", email = "leite@castlab.org", role = c("aut", "cre")),
