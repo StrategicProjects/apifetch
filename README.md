@@ -35,6 +35,15 @@ Python sibling lives at
 
 ## Installation
 
+Install the released version from
+[CRAN](https://CRAN.R-project.org/package=apifetch):
+
+``` r
+install.packages("apifetch")
+```
+
+Or the development version from GitHub:
+
 ``` r
 # install.packages("pak")
 pak::pak("StrategicProjects/apifetch")
