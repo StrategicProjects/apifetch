@@ -27,7 +27,7 @@ Authors:
   \item André Leite \email{leite@castlab.org}
   \item Hugo Vasconcelos \email{hugo.vasconcelos@ufpe.br}
   \item Diogo Bezerra \email{diogo.bezerra@ufpe.br}
-  \item Marcos Wasilew \email{marcos.wasilew@gmail.com}
+  \item Marcos Wasiliew \email{marcos.wasilew@gmail.com}
   \item Carlos Amorim \email{carlos.agaf@ufpe.br}
 }
 
