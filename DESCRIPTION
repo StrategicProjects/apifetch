@@ -13,7 +13,10 @@ Authors@R: c(
     person("Marcos", "Wasiliew", email = "marcos.wasilew@gmail.com", role = "aut",
            comment = c(ORCID = "0009-0004-4694-3159")),
     person("Carlos", "Amorim", email = "carlos.agaf@ufpe.br", role = "aut",
-           comment = c(ORCID = "0000-0001-6315-8305")))
+           comment = c(ORCID = "0000-0001-6315-8305")),
+    person("Júlia", "Nascimento Barreto",
+           email = "juliabarreto@gd.seplag.pe.gov.br", role = "aut",
+           comment = c(ORCID = "0009-0004-2851-7770")))
 Description: A small, dependency-light toolkit for talking to token-authenticated
     REST APIs. It manages authentication tokens in process environment variables
     (never written to disk), builds requests with configurable authentication and

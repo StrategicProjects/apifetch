@@ -4,7 +4,8 @@ This is an update of 'apifetch' (0.1.0 -> 0.2.0). It fixes several bugs
 (an infinite loop in `af_fetch_all()` with non-paginated APIs, malformed URLs
 when the endpoint already has a query string, and edge cases in argument
 validation) and adds small improvements; see NEWS.md. It also corrects the
-spelling of two co-authors' surnames ("Amorim", "Wasiliew").
+spelling of two co-authors' surnames ("Amorim", "Wasiliew"), adds
+authors' ORCID iDs, and adds a new co-author (Júlia Nascimento Barreto).
 
 ## R CMD check results
 
