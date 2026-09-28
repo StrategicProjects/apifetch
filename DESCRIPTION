@@ -10,7 +10,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-6249-0920")),
     person("Diogo", "Bezerra", email = "diogo.bezerra@ufpe.br", role = "aut",
            comment = c(ORCID = "0000-0002-1216-8674")),
-    person("Marcos", "Wasiliew", email = "marcos.wasilew@gmail.com", role = "aut",
+    person("Marcos", "Wasiliew", email = "marcos.wasiliew@gmail.com", role = "aut",
            comment = c(ORCID = "0009-0004-4694-3159")),
     person("Carlos", "Amorim", email = "carlos.agaf@ufpe.br", role = "aut",
            comment = c(ORCID = "0000-0001-6315-8305")),
