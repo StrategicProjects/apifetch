@@ -38,3 +38,22 @@ test_that("invalid inputs error", {
   expect_error(af_store_token("x", ""))
   expect_error(af_get_token(""))
 })
+
+test_that("store can overwrite when asked", {
+  svc <- "apifetchTest"
+  on.exit(suppressMessages(af_remove_token("gamma", service = svc)), add = TRUE)
+
+  suppressMessages(af_store_token("gamma", "first", service = svc))
+  suppressMessages(af_store_token("gamma", "second", service = svc, overwrite = TRUE))
+  expect_equal(af_get_token("gamma", service = svc), "second")
+})
+
+test_that("sanitized names are plain ASCII on every platform", {
+  expect_equal(apifetch:::.sanitize_name("Saúde pública"), "Saude_publica")
+})
+
+test_that("af_list_tokens treats the service literally, not as a regex", {
+  on.exit(Sys.unsetenv("aXb_tok"), add = TRUE)
+  Sys.setenv(aXb_tok = "x")
+  expect_false("tok" %in% suppressMessages(af_list_tokens(service = "a.b")))
+})

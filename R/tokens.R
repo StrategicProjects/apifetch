@@ -7,17 +7,20 @@
 #'
 #' Stores an authentication token in a process environment variable named
 #' `"<service>_<name>"`. The token is never written to disk. If a non-empty
-#' variable with that name already exists, the function refuses to overwrite it.
+#' variable with that name already exists, the function refuses to overwrite it
+#' unless `overwrite = TRUE` (e.g. to rotate an expired token).
 #'
 #' @param name The identifier for this token (e.g. a dataset or resource name).
 #' @param token The authentication token (character).
 #' @param service A namespace prefix grouping tokens for one API. Default
 #'   `"apifetch"`.
+#' @param overwrite Replace an existing token? Default `FALSE`.
 #' @return Invisibly `NULL`; called for its side effect.
 #' @examples
 #' bdpe <- af_store_token("dengue", "your-token-here", service = "BigDataPE")
 #' @export
-af_store_token <- function(name, token, service = "apifetch") {
+af_store_token <- function(name, token, service = "apifetch",
+                           overwrite = FALSE) {
   if (!is.character(name) || !nzchar(name)) {
     cli::cli_abort("{.arg name} must be a non-empty string.")
   }
@@ -27,9 +30,9 @@ af_store_token <- function(name, token, service = "apifetch") {
 
   env_var_name <- .token_var(name, service)
 
-  if (nzchar(Sys.getenv(env_var_name, unset = ""))) {
+  if (!isTRUE(overwrite) && nzchar(Sys.getenv(env_var_name, unset = ""))) {
     cli::cli_alert_warning(
-      "The environment variable {.envvar {env_var_name}} is already defined. Not overwriting to avoid data loss."
+      "The environment variable {.envvar {env_var_name}} is already defined. Not overwriting to avoid data loss (use {.code overwrite = TRUE} to replace it)."
     )
     return(invisible())
   }
@@ -106,14 +109,14 @@ af_remove_token <- function(name, service = "apifetch") {
 #' af_list_tokens(service = "BigDataPE")
 #' @export
 af_list_tokens <- function(service = "apifetch") {
-  prefix <- paste0("^", .sanitize_name(service), "_")
+  prefix <- paste0(.sanitize_name(service), "_")
   all_envs <- Sys.getenv()
-  stored <- grep(prefix, names(all_envs), value = TRUE)
+  stored <- names(all_envs)[startsWith(names(all_envs), prefix) & nzchar(all_envs)]
 
   if (length(stored) == 0) {
     cli::cli_alert_info("No tokens found for service {.val {service}}.")
     return(character(0))
   }
 
-  sub(prefix, "", stored)
+  substring(stored, nchar(prefix) + 1L)
 }

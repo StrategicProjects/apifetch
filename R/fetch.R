@@ -69,15 +69,37 @@ af_fetch <- function(api, name, limit = Inf, offset = 0L, query = list(),
   status <- httr2::resp_status(resp)
   if (status >= 400L) {
     reason <- httr2::resp_status_desc(resp)
+    hint <- if (status %in% c(401L, 403L)) {
+      "Check that your token for {.val {name}} is valid and has access to this endpoint."
+    } else {
+      "Try again later, and check that the endpoint is correct and your token is valid."
+    }
     cli::cli_abort(c(
       "The API returned an error (HTTP {status} - {reason}).",
-      "i" = "Try again later, and check that the endpoint is correct and your token is valid."
+      "i" = hint
     ))
   }
 
-  resp |>
-    httr2::resp_body_json(simplifyVector = TRUE) |>
-    tibble::as_tibble()
+  if (!httr2::resp_has_body(resp)) {
+    return(tibble::tibble())
+  }
+
+  body <- tryCatch(
+    httr2::resp_body_json(resp, check_type = FALSE, simplifyVector = TRUE),
+    error = function(e) {
+      cli::cli_abort(c(
+        "The API response could not be parsed as JSON.",
+        "i" = "Content type: {.val {httr2::resp_content_type(resp)}}.",
+        "x" = conditionMessage(e)
+      ))
+    }
+  )
+
+  if (length(body) == 0) {
+    return(tibble::tibble())
+  }
+
+  tibble::as_tibble(body)
 }
 
 #' Fetch all data from an API in chunks
@@ -85,11 +107,15 @@ af_fetch <- function(api, name, limit = Inf, offset = 0L, query = list(),
 #' Iteratively calls [af_fetch()] with an advancing `offset`, stopping when a
 #' chunk comes back empty or `total_limit` is reached, then row-binds the chunks
 #' into one tibble. Columns listed in the API profile's `drop_cols` are removed.
+#' With [af_paginate_none()] a single request is made, since the API cannot be
+#' paged. If the API returns more rows than requested, the result is truncated
+#' to `total_limit`.
 #'
 #' @inheritParams af_fetch
 #' @param total_limit Maximum number of records to retrieve in total. Default
 #'   `Inf` (all available).
-#' @param chunk_size Records to request per chunk. Default `50000`.
+#' @param chunk_size Records to request per chunk. Default `50000`; `Inf`
+#'   requests everything in one call.
 #' @return A tibble with all retrieved records.
 #' @examples
 #' \dontrun{
@@ -116,12 +142,14 @@ af_fetch_all <- function(api, name, total_limit = Inf, chunk_size = 50000L,
     cli::cli_abort("{.arg chunk_size} must be a positive whole number.")
   }
 
+  paged <- !isFALSE(api$pagination$paged)
   offset <- 0L
   total_fetched <- 0L
   all_data <- list()
 
   repeat {
-    current_limit <- as.integer(min(chunk_size, total_limit - total_fetched))
+    # Stays `Inf` (parameter omitted) when neither bound is finite.
+    current_limit <- min(chunk_size, total_limit - total_fetched)
     if (current_limit <= 0) break
 
     chunk <- af_fetch(
@@ -137,16 +165,17 @@ af_fetch_all <- function(api, name, total_limit = Inf, chunk_size = 50000L,
     if (length(drop)) chunk <- dplyr::select(chunk, -dplyr::all_of(drop))
 
     if (nrow(chunk) == 0L) break
+    if (nrow(chunk) > current_limit) chunk <- chunk[seq_len(current_limit), ]
 
     all_data <- append(all_data, list(chunk))
-    total_fetched <- as.integer(total_fetched) + nrow(chunk)
+    total_fetched <- total_fetched + nrow(chunk)
 
     if (verbosity > 0L) {
       cli::cli_alert_info("Fetched {nrow(chunk)} records (total: {total_fetched}).")
     }
 
-    offset <- as.integer(offset) + nrow(chunk)
-    if (total_fetched >= total_limit) break
+    offset <- offset + nrow(chunk)
+    if (!paged || total_fetched >= total_limit) break
   }
 
   combined <- dplyr::bind_rows(all_data)

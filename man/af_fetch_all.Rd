@@ -22,7 +22,8 @@ af_fetch_all(
 \item{total_limit}{Maximum number of records to retrieve in total. Default
 \code{Inf} (all available).}
 
-\item{chunk_size}{Records to request per chunk. Default \code{50000}.}
+\item{chunk_size}{Records to request per chunk. Default \code{50000}; \code{Inf}
+requests everything in one call.}
 
 \item{query}{A named list of additional query-string filters. Default empty.}
 
@@ -36,6 +37,9 @@ A tibble with all retrieved records.
 Iteratively calls \code{\link[=af_fetch]{af_fetch()}} with an advancing \code{offset}, stopping when a
 chunk comes back empty or \code{total_limit} is reached, then row-binds the chunks
 into one tibble. Columns listed in the API profile's \code{drop_cols} are removed.
+With \code{\link[=af_paginate_none]{af_paginate_none()}} a single request is made, since the API cannot be
+paged. If the API returns more rows than requested, the result is truncated
+to \code{total_limit}.
 }
 \examples{
 \dontrun{

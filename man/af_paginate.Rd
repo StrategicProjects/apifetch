@@ -30,7 +30,8 @@ the result to the \code{pagination} argument of \code{\link[=af_api]{af_api()}}.
 \itemize{
 \item \code{af_paginate_offset()}: send \code{limit}/\code{offset} either as HTTP headers
 (default, as the Big Data PE API expects) or as URL query parameters.
-\item \code{af_paginate_none()}: send no pagination parameters.
+\item \code{af_paginate_none()}: send no pagination parameters. \code{\link[=af_fetch_all]{af_fetch_all()}}
+then performs a single request, since the API cannot be paged.
 }
 
 Non-positive or infinite values are omitted from the request.

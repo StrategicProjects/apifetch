@@ -76,7 +76,8 @@ af_auth_query <- function(param = "api_key") {
 #'
 #' - `af_paginate_offset()`: send `limit`/`offset` either as HTTP headers
 #'   (default, as the Big Data PE API expects) or as URL query parameters.
-#' - `af_paginate_none()`: send no pagination parameters.
+#' - `af_paginate_none()`: send no pagination parameters. [af_fetch_all()]
+#'   then performs a single request, since the API cannot be paged.
 #'
 #' Non-positive or infinite values are omitted from the request.
 #'
@@ -90,8 +91,8 @@ af_auth_query <- function(param = "api_key") {
 #' af_paginate_none()
 NULL
 
-.pagination <- function(apply) {
-  structure(list(apply = apply), class = "apifetch_pagination")
+.pagination <- function(apply, paged = TRUE) {
+  structure(list(apply = apply, paged = paged), class = "apifetch_pagination")
 }
 
 #' @rdname af_paginate
@@ -113,7 +114,7 @@ af_paginate_offset <- function(where = c("header", "query"),
 #' @rdname af_paginate
 #' @export
 af_paginate_none <- function() {
-  .pagination(function(req, limit, offset) req)
+  .pagination(function(req, limit, offset) req, paged = FALSE)
 }
 
 # ---- API profile ----------------------------------------------------------

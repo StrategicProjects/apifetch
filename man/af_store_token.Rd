@@ -4,7 +4,7 @@
 \alias{af_store_token}
 \title{Store an API token in an environment variable}
 \usage{
-af_store_token(name, token, service = "apifetch")
+af_store_token(name, token, service = "apifetch", overwrite = FALSE)
 }
 \arguments{
 \item{name}{The identifier for this token (e.g. a dataset or resource name).}
@@ -13,6 +13,8 @@ af_store_token(name, token, service = "apifetch")
 
 \item{service}{A namespace prefix grouping tokens for one API. Default
 \code{"apifetch"}.}
+
+\item{overwrite}{Replace an existing token? Default \code{FALSE}.}
 }
 \value{
 Invisibly \code{NULL}; called for its side effect.
@@ -20,7 +22,8 @@ Invisibly \code{NULL}; called for its side effect.
 \description{
 Stores an authentication token in a process environment variable named
 \code{"<service>_<name>"}. The token is never written to disk. If a non-empty
-variable with that name already exists, the function refuses to overwrite it.
+variable with that name already exists, the function refuses to overwrite it
+unless \code{overwrite = TRUE} (e.g. to rotate an expired token).
 }
 \examples{
 bdpe <- af_store_token("dengue", "your-token-here", service = "BigDataPE")

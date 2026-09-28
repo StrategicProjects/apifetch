@@ -17,7 +17,9 @@ when there are no parameters to add).
 }
 \description{
 Appends a named list of query parameters to a base URL, URL-encoding both
-names and values and dropping parameters whose value is the empty string.
+names and values. Parameters whose value is \code{NULL}, \code{NA} or the empty string
+are dropped; a parameter with several values is repeated (\code{a=1&a=2}). If
+\code{url} already has a query string, the new parameters are appended to it.
 }
 \examples{
 parse_queries("https://example.com", list(a = "1", b = "2"))
