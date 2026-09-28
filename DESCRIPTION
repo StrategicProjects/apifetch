@@ -4,11 +4,16 @@ Title: Token-Authenticated REST API Retrieval Toolkit
 Version: 0.2.0
 Date: 2026-09-28
 Authors@R: c(
-    person("André", "Leite", email = "leite@castlab.org", role = c("aut", "cre")),
-    person("Hugo", "Vasconcelos", email = "hugo.vasconcelos@ufpe.br", role = "aut"),
-    person("Diogo", "Bezerra", email = "diogo.bezerra@ufpe.br", role = "aut"),
-    person("Marcos", "Wasiliew", email = "marcos.wasilew@gmail.com", role = "aut"),
-    person("Carlos", "Amorim", email = "carlos.agaf@ufpe.br", role = "aut"))
+    person("André", "Leite", email = "leite@castlab.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-4718-9766")),
+    person("Hugo", "Vasconcelos", email = "hugo.vasconcelos@ufpe.br", role = "aut",
+           comment = c(ORCID = "0000-0001-6249-0920")),
+    person("Diogo", "Bezerra", email = "diogo.bezerra@ufpe.br", role = "aut",
+           comment = c(ORCID = "0000-0002-1216-8674")),
+    person("Marcos", "Wasiliew", email = "marcos.wasilew@gmail.com", role = "aut",
+           comment = c(ORCID = "0009-0004-4694-3159")),
+    person("Carlos", "Amorim", email = "carlos.agaf@ufpe.br", role = "aut",
+           comment = c(ORCID = "0000-0001-6315-8305")))
 Description: A small, dependency-light toolkit for talking to token-authenticated
     REST APIs. It manages authentication tokens in process environment variables
     (never written to disk), builds requests with configurable authentication and
